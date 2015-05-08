@@ -1,0 +1,27 @@
+<div class="subjects index">
+  <h2>Subjects</h2>
+
+  <%= link_to("Add New Subject", {:action => 'new'}, :class => "action new") %>
+
+  <table class="listing" summary="Subject List">
+    <tr class="header">
+      <th>&nbsp;</th>
+      <th>Subject</th>
+      <th>Visible</th>
+      <th>Pages</th>
+      <th>Actions</th>
+    </tr>
+    <% @subjects.each do |s| %>
+    <tr>
+      <td><%= s.position %></td>
+      <td><%= s.name %></td>
+      <td class="center"><%= s.visible ? 'Yes' : 'No' %></td>
+      <td class="center"><%= s.pages.size %></td>
+      <td class="actions">
+        <%= link_to("Show", {:action => 'show', :id => s.id}, :class => 'action show') %>
+        <%= link_to("Edit", '#', :class => 'action edit') %>
+        <%= link_to("Destroy", '#', :class => 'action destroy') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
